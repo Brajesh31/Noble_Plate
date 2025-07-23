@@ -1,0 +1,597 @@
+:root {
+    --primary-color: #D4AF37; /* Rich Gold */
+    --secondary-color: #0A0A1F; /* Deep Navy */
+    --text-color: #FAF3E0; /* Warm Ivory */
+    --background-color: #4B3A2B; /* Bronze */
+    --highlight-color: #8B0000; /* Deep Crimson Rose */
+    --dark-brass:#2e3846; /* Dark Brass */
+    --white: #FFFFFF; /* White */
+    --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+    --transition: all 0.3s ease; /* Smooth transitions */
+    --text-shad: 2px 2px #000;
+    --footer : #1C1C20
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+*::selection{
+    background: rgba(0, 0, 0, 0);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Banner #about with background */
+.banner {
+    height: 100dvh;
+    background-image: url("logo/Leonardo_Kino_XL_Design_a_luxurious_background_cover_photo_for_3.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+.banner::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.2);
+}
+
+/* Header and Navigation */
+header {
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+    border-radius: 0 0 10px 10px;
+    background: rgba(10, 10, 31, 0.7); /* Deep Navy with transparency */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: var(--box-shadow);
+}
+
+nav {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-decoration: none;
+    text-shadow: var(--text-shad);
+}
+.logo::selection , h1::selection{
+    background: rgba(0, 0, 0, 0);
+    color: var(--highlight-color);
+}
+p::selection{
+    color:var(--primary-color);
+}
+.navigation-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+}
+
+.navigation-links a {
+    color:  var(--primary-color);
+    text-decoration: none;
+    font-weight: 500;
+    font-weight: bold;
+    transition: color 0.3s ease;
+
+}
+
+
+.navigation-links a:hover {
+    color: var(--highlight-color);
+}
+
+.btn-order {
+    background: var(--primary-color);
+    color: var(--secondary-color) !important;
+    padding: 0.5rem 1rem;
+    border-radius: 25px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-order:hover {
+    background: var(--highlight-color);
+    color: var(--white) !important;
+}
+
+/* Banner Content */
+.banner-content {
+    position: relative;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: var(--text-color);
+    padding: 0 1rem;
+    position: sticky;
+    top: 0;
+}
+
+.banner-content img {
+    max-width: 150px;
+    border-radius: 50%;
+    transform: translateY(-150px);
+    opacity: 0.1;
+    animation: imgshow 5s forwards ease-in-out, imgshow2 5s infinite ease-in-out 5s;
+}
+
+@keyframes imgshow {
+    0% {
+        transform: translateY(-150px);
+        opacity: 0.1;
+    }
+    25% {
+        transform: translateY(0px);
+        opacity: 1;
+    }
+    75% {
+        transform: translateY(-50px);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(0px);
+        opacity: 1;
+    }
+}
+
+@keyframes imgshow2 {
+    0%, 100% {
+        transform: translateY(0px);
+        opacity: 1;
+    }
+    50% {
+        transform: translateY(-30px);
+        opacity: 1;
+    }
+}
+
+.banner-content h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.banner-content p {
+    font-size: 1.25rem;
+    max-width: 600px;
+    margin-bottom: 2rem;
+}
+
+.btn-cta {
+    display: inline-block;
+    padding: 1rem 2rem;
+    background: var(--primary-color);
+    color: var(--secondary-color);
+    text-decoration: none;
+    border-radius: 30px;
+    font-weight: bold;
+    transition: transform 0.3s ease;
+}
+
+.btn-cta:hover {
+    transform: translateY(-2px);
+    background: var(--highlight-color);
+    color: var(--white);
+}
+.banner-content h1 , .banner-content p , .banner-content a{
+    animation-name: pop-up;
+    opacity: 0;
+    animation-delay: 1.5s;
+    animation-duration: 2s;
+    animation-direction: alternate;
+    animation-fill-mode: forwards;
+}
+
+@keyframes pop-up {
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+
+/* Mobile Menu */
+.toggle-menu {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--white);
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .toggle-menu {
+        display: block;
+    }
+
+    .navigation-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--secondary-color); /* Deep Navy */
+        padding: 1rem;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .navigation-links.active {
+        display: flex;
+        background: rgba(10, 10, 31, 0.7); /* Deep Navy with transparency */
+        backdrop-filter: blur(20px);
+    }
+
+    .banner-content h1 {
+        font-size: 2.5rem;
+    }
+}
+
+.about {
+    width: 100%;
+    height: 100dvh;
+    padding: 0 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--dark-brass);
+    background-image:url('logo/Leonardo_Kino_XL_Design_the_exterior_of_a_luxurious_fine_dinin_3.jpg') ;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+.about .box {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    background-color: #000;
+    background:linear-gradient(to right,var(--dark-brass) 25%,#2e384601);
+}
+
+.about .box > div {
+    width: 50%;
+    display: flex;
+    padding: 0 20px;
+}
+.about .box .img-box{
+    justify-content: center;
+    align-items: center;
+}
+.about .box .text {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+}
+
+.about .text h2 {
+    color: var(--primary-color);
+    font-size: 2rem;
+    margin: 0 0 1.5rem 0 ;
+}
+
+.about .text p {
+    color: var(--text-color);
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.about img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: var(--box-shadow);
+    transition: var(--transition);
+}
+
+.about img:hover {
+    transform: translateY(-5px);
+}
+
+@media (max-width: 768px) {
+    .about .box {
+        flex-direction: column;
+        background:linear-gradient(to top,var(--secondary-color) 1%,#2e384601);
+        justify-content: end;
+    }
+
+    .about {
+        height: 100dvh;
+        background-position:center;
+    }
+
+    .about .box > div {
+        width: 100%;
+        height: 40%;
+    }
+
+    .about .box .text {
+        text-align: center;
+        align-items: center;
+        margin:0 0 5rem 0;
+    }
+    .about .text h2{
+        margin: 0 0 2rem 0;
+    }
+    .about img {
+        max-height: 300px;
+    }
+}
+
+.std {
+    width: 100%;
+    height: 100dvh;
+    padding: 50px 0;
+    background-color:var(--secondary-color);
+    display: flex;
+    flex-direction: column; /* Added to stack slideshow and dots */
+    justify-content: center;
+    align-items: center;
+}
+.std h2{
+    font-size: 2rem;
+    color: var(--text-color);
+    text-shadow: 5px 5px 10px var(--dark-brass);
+}
+/* Slideshow container */
+.slideshow-container {
+    max-width: 1000px;
+    position: relative;
+    margin: auto;
+}
+
+/* Hide the images by default */
+.mySlides {
+    display: none;
+}
+
+.mySlides img {
+    width: 100%;
+    height: 450px; /* Adjust as needed */
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: var(--box-shadow);
+}
+
+/* Next & previous buttons */
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    margin-top: -22px;
+    padding: 16px;
+    color: var(--white);
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little extra opacity */
+.prev:hover, .next:hover {
+    background-color: rgba(0,0,0,0.8);
+}
+
+
+/* Number text (1/3 etc) */
+.numbertext {
+    color: #f2f2f2;
+    font-size: 12px;
+    padding: 8px 12px;
+    position: absolute;
+    top: 0;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+}
+
+.active,
+.dot:hover {
+    background: var(--primary-color);
+}
+
+/* Fading animation */
+.fade {
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
+
+@keyframes fade {
+    from {opacity: .4}
+    to {opacity: 1}
+}
+
+.std .box {
+    display: none; /* Hide the original grid layout */
+    width: 90%;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.std .box img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: var(--box-shadow);
+    transition: var(--transition);
+}
+
+.std .box img:hover {
+    transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+    .std {
+        padding: 50px 0;
+    }
+
+    .std .box {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    }
+
+    .std .box img {
+        height: 150px;
+    }
+    .mySlides img {
+        height: 200px; /* Adjust for mobile */
+    }
+}
+
+.cont {
+    width: 100%;
+    padding: 50px 0;
+    background-color: var(--dark-brass);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cont .box {
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.cont .info-card {
+    background-color: var(--secondary-color);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    color: var(--text-color);
+    box-shadow: var(--box-shadow);
+    transition: var(--transition);
+    width: 300px;
+}
+
+.cont a{
+    text-decoration: none;
+}
+
+.cont .info-card:hover{
+    transform: translateY(-5px);
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+}
+
+.cont .info-card i {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+.cont .info-card:hover i {
+    color: var(--secondary-color);
+}
+
+.cont .info-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 5px;
+}
+
+.cont .info-card p {
+    font-size: 1rem;
+}
+
+@media (max-width: 768px) {
+    .cont .box{
+        flex-direction: column;
+    }
+    .cont .info-card , .cont a{
+        width: 100%;
+    }
+
+
+}
+
+footer {
+    width: 100%;
+    padding: 20px 0;
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+    text-align: center;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.social-media {
+    display: flex;
+    gap: 15px;
+}
+
+.social-media a {
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    transition: var(--transition);
+}
+
+.social-media a:hover {
+    color: var(--text-color);
+}
+
+footer p {
+    font-size: 0.9rem;
+}
